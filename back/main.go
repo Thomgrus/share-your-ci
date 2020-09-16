@@ -4,6 +4,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/Thomgrus/share-your-ci/back/config"
 )
 
 func getPort() string {
@@ -15,6 +17,7 @@ func getPort() string {
 }
 
 func main() {
+	config.DatabaseInit()
 	router := InitializeRouter()
 
 	// Listen
