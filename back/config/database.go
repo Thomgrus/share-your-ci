@@ -20,7 +20,7 @@ var client *redis.Client
 func DatabaseInit() {
 	var redisAddr = fmt.Sprintf("%s:%d", os.Getenv("REDIS_HOSTNAME"), port)
 
-	client := redis.NewClient(&redis.Options{
+	client = redis.NewClient(&redis.Options{
 		Addr:     redisAddr,
 		Password: password,
 		DB:       db,

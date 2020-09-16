@@ -14,5 +14,7 @@ func InitializeRouter() *mux.Router {
 	// Health Check
 	router.Methods("GET").Path("/up").Name("Health").HandlerFunc(controllers.HealthCheck)
 
+	// PresPart
+	router.Methods("GET").Path("/api/pres/part").Name("PresPart").HandlerFunc(controllers.GetPresPart)
 	return router
 }

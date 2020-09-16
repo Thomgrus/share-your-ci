@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/Thomgrus/share-your-ci/back/config"
+	"github.com/Thomgrus/share-your-ci/back/models"
 )
 
 func getPort() string {
@@ -18,6 +19,10 @@ func getPort() string {
 
 func main() {
 	config.DatabaseInit()
+
+	// Initialize Data
+	models.InitPresPartData()
+
 	router := InitializeRouter()
 
 	// Listen
