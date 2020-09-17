@@ -1,0 +1,31 @@
+# Please Note that this file IS NOT PRODUCTION READY.
+# It's only dedicated to local test & try
+
+version: '3.5'
+
+services:
+  back:
+    build: ./demo-java
+    image: "demo-java"
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - web_net
+  front:
+    build: ./demo-angular
+    image: "demo-angular"
+    restart: always
+    environment:
+      - API_URL=back:8080
+    ports:
+      - 80:80
+    networks:
+      - web_net
+networks:
+  web_net:
+
+# validate: validate the schema, makes no changes to the database.
+# update: update the schema.
+# create: creates the schema, destroying previous data.
+# create-drop: drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped.

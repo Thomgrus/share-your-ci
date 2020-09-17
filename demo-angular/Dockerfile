@@ -1,0 +1,23 @@
+# STAGE 1 : build
+FROM node:12 as builder
+
+WORKDIR /usr/src/app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . ./
+
+RUN npm run build
+
+# STAGE 2 : serve
+
+FROM nginx:1.19
+
+ENV API_URL "localhost:8080"
+
+COPY --from=builder /usr/src/app/dist/demo-angular /usr/share/nginx/html
+COPY config/default.conf.template /etc/nginx/templates/default.conf.template
+
+EXPOSE 80

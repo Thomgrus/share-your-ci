@@ -1,0 +1,14 @@
+<div class="row justify-content-center">
+  <div class="card col-md-3 m-2" *ngFor="let tesla of teslas">
+    <img class="card-img-top" [src]="tesla.modelTesla.photoLink" alt="Car image">
+    <div class="card-body">
+      <h5 class="card-title">{{tesla.modelTesla.name}}</h5>
+      <p class="card-text">{{tesla.modelTesla.description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">0-100: {{tesla.motorisation.acceleration}}</li>
+      <li class="list-group-item">Autonomie: {{tesla.motorisation.autonomy}}</li>
+      <li class="list-group-item">Prix: {{tesla.price}}</li>
+    </ul>
+  </div>
+</div>
